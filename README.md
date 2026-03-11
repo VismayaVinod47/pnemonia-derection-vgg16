@@ -29,3 +29,14 @@ python app.py
 ```
 
 Then open [http://127.0.0.1:5000](http://127.0.0.1:5000).
+
+
+## Model Training
+
+The model was trained using Google Colab.
+
+You can access the training notebook here:
+
+https://colab.research.google.com/drive/1qza3rjpMYc79Pavw4-s_VA87kxuNI8Ka?usp=sharing
+
+The trained model (`federated_vgg.pt`) was downloaded from Google Colab and used for inference in this project.
