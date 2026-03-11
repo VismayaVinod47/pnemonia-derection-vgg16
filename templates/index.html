@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pneumonia Detection | Chest X-ray</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="lp-shell">
+      <section class="lp-hero">
+        <img
+          src="{{ url_for('static', filename='chest-xray.svg') }}"
+          alt="Chest X-ray visual"
+          class="lp-hero-image"
+        />
+        <div class="lp-overlay"></div>
+        <div class="lp-content">
+          <p class="lp-tag">Pneumonia Awareness</p>
+          <h1>Protect Lungs Early With Chest X-ray Screening</h1>
+          <p>
+            Pneumonia can worsen rapidly, especially in children, older adults, and low-immunity
+            patients. Early screening improves treatment timing and outcomes.
+          </p>
+          <a class="lp-btn" href="{{ url_for('predict') }}">Open Detection Dashboard</a>
+        </div>
+      </section>
+
+      <section class="lp-grid">
+        <article class="lp-card">
+          <h2>Common Warning Signs</h2>
+          <p>
+            Watch for persistent cough with phlegm, rapid breathing, chest pain while breathing,
+            fever, fatigue, and low-oxygen symptoms. These signs can indicate possible lung infection
+            and should be evaluated early.
+          </p>
+        </article>
+
+        <article class="lp-card">
+          <h2>AI Screening Scope</h2>
+          <p>
+            This tool analyzes a 224x224 chest X-ray image using a federated VGG16 model and returns
+            a classification as Normal or Pneumonia. Prediction decisions are made with a 50%
+            threshold for binary output.
+          </p>
+        </article>
+      </section>
+
+      <section class="lp-band">
+        <article>
+          <p class="lp-metric">2.5M+</p>
+          <p>Annual pneumonia-related deaths globally (all age groups combined).</p>
+        </article>
+        <article>
+          <p class="lp-metric">Early Check</p>
+          <p>Fast chest X-ray review can support earlier clinical decisions and triage.</p>
+        </article>
+        <article>
+          <p class="lp-metric">At-Risk Groups</p>
+          <p>Children, older adults, and people with chronic disease need quicker evaluation.</p>
+        </article>
+      </section>
+
+      <section class="lp-block">
+        <div class="lp-block-head">
+          <p class="lp-kicker">Awareness Guide</p>
+          <h2>When To Seek Medical Evaluation</h2>
+        </div>
+        <div class="lp-steps">
+          <article class="lp-step">
+            <span>01</span>
+            <h3>Observe Symptoms</h3>
+            <p>
+              Monitor breathing effort, fever duration, cough severity, and unusual fatigue for
+              more than a few days.
+            </p>
+          </article>
+          <article class="lp-step">
+            <span>02</span>
+            <h3>Prioritize High-Risk Cases</h3>
+            <p>
+              Immediate evaluation is recommended for children, seniors, or anyone with low oxygen
+              signs and chest discomfort.
+            </p>
+          </article>
+          <article class="lp-step">
+            <span>03</span>
+            <h3>Use Screening Responsibly</h3>
+            <p>
+              AI chest X-ray output should support awareness and triage, not replace physician
+              diagnosis or treatment planning.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="lp-block lp-block-alt">
+        <div class="lp-block-head">
+          <p class="lp-kicker">Prevention Focus</p>
+          <h2>Daily Steps That Reduce Risk</h2>
+        </div>
+        <div class="lp-columns">
+          <article>
+            <h3>Respiratory Hygiene</h3>
+            <p>
+              Wash hands regularly, cover coughs and sneezes, and avoid close exposure to people
+              with active respiratory infections.
+            </p>
+          </article>
+          <article>
+            <h3>Immunity Support</h3>
+            <p>
+              Maintain sleep, nutrition, hydration, and manage existing conditions such as asthma,
+              diabetes, or chronic heart and lung disease.
+            </p>
+          </article>
+          <article>
+            <h3>Timely Follow-up</h3>
+            <p>
+              If symptoms worsen despite medication, seek re-evaluation quickly and do not delay
+              chest imaging when advised.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="lp-faq">
+        <div class="lp-block-head">
+          <p class="lp-kicker">FAQ</p>
+          <h2>Quick Clarifications</h2>
+        </div>
+        <details open>
+          <summary>Can this AI result be treated as final diagnosis?</summary>
+          <p>No. It is an awareness and triage aid. Final diagnosis must come from qualified clinicians.</p>
+        </details>
+        <details>
+          <summary>What type of image should I upload?</summary>
+          <p>Use chest X-ray images only. Non-X-ray images are blocked as invalid input.</p>
+        </details>
+        <details>
+          <summary>What does confidence percentage mean?</summary>
+          <p>It indicates model certainty for its predicted class, not guaranteed clinical accuracy.</p>
+        </details>
+      </section>
+
+      <section class="lp-cta-strip">
+        <h2>Start a Chest X-ray Screening Session</h2>
+        <a class="lp-btn lp-btn-dark" href="{{ url_for('predict') }}">Go To Prediction Page</a>
+      </section>
+    </main>
+  </body>
+</html>

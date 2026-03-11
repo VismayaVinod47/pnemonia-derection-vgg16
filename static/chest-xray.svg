@@ -1,0 +1,44 @@
+<svg width="720" height="840" viewBox="0 0 720 840" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f2339" />
+      <stop offset="1" stop-color="#071625" />
+    </linearGradient>
+    <linearGradient id="lung" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c7d3e0" stop-opacity="0.95" />
+      <stop offset="1" stop-color="#8da1b8" stop-opacity="0.85" />
+    </linearGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" />
+    </filter>
+  </defs>
+
+  <rect x="20" y="20" width="680" height="800" rx="30" fill="url(#bg)" />
+
+  <ellipse cx="250" cy="460" rx="145" ry="245" fill="url(#lung)" />
+  <ellipse cx="470" cy="460" rx="145" ry="245" fill="url(#lung)" />
+
+  <rect x="337" y="175" width="46" height="130" rx="18" fill="#b3c3d5" />
+  <rect x="327" y="290" width="66" height="300" rx="26" fill="#96acc2" opacity="0.85" />
+
+  <g stroke="#dce6f2" stroke-opacity="0.5" stroke-width="8">
+    <path d="M130 280C220 245 310 245 360 270" />
+    <path d="M120 340C220 305 310 305 360 330" />
+    <path d="M110 400C220 365 310 365 360 390" />
+    <path d="M108 460C220 425 310 425 360 450" />
+    <path d="M115 520C220 485 310 485 360 510" />
+    <path d="M125 580C220 545 310 545 360 570" />
+
+    <path d="M590 280C500 245 410 245 360 270" />
+    <path d="M600 340C500 305 410 305 360 330" />
+    <path d="M610 400C500 365 410 365 360 390" />
+    <path d="M612 460C500 425 410 425 360 450" />
+    <path d="M605 520C500 485 410 485 360 510" />
+    <path d="M595 580C500 545 410 545 360 570" />
+  </g>
+
+  <circle cx="445" cy="468" r="74" fill="#f97316" fill-opacity="0.28" filter="url(#soft)" />
+  <circle cx="455" cy="478" r="44" fill="#ef4444" fill-opacity="0.35" filter="url(#soft)" />
+
+  <rect x="95" y="115" width="530" height="615" rx="26" stroke="#dbe6f2" stroke-opacity="0.35" stroke-width="6" />
+</svg>

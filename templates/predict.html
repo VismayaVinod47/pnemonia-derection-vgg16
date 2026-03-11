@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pneumonia Detection Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="hero-top">
+          <a class="ghost-link" href="{{ url_for('landing') }}">Home</a>
+        </div>
+        <h1>Pneumonia Detection Dashboard</h1>
+        <p class="subtitle">
+          Upload a chest X-ray image to run local federated model inference and inspect confidence.
+        </p>
+      </section>
+
+      <section class="panel">
+        <form method="POST" enctype="multipart/form-data" class="upload-form" id="predict-form">
+          <label for="image" class="field-label">X-ray image</label>
+          <input id="image" type="file" name="image" accept="image/*" required />
+          <button type="submit">Run Prediction</button>
+        </form>
+
+        {% if prediction %}
+        <section class="result {{ result_theme }}" id="prediction-result">
+          <p class="result-label">Prediction</p>
+          <h2>{{ prediction }}</h2>
+          <div class="confidence-meta">
+            <span>Confidence</span>
+            <strong>{{ "%.2f"|format(confidence) }}%</strong>
+          </div>
+          <div class="meter {{ result_theme }}">
+            <span style="width: {{ confidence }}%"></span>
+          </div>
+        </section>
+        {% endif %}
+
+        {% if image_preview %}
+        <section class="result neutral" id="preview-result">
+          <p class="result-label">Uploaded Image</p>
+          <figure class="preview-wrap">
+            <img src="{{ image_preview }}" alt="Uploaded X-ray preview" class="preview-image" />
+          </figure>
+        </section>
+        {% endif %}
+
+        {% if prediction %}
+        <hr class="section-line" id="model-details-line" />
+        <section class="model-details" id="model-details">
+          <p class="result-label">Model Details</p>
+          <ul>
+            <li>Architecture: VGG16</li>
+            <li>Training: Federated Learning</li>
+            <li>Input Size: 224x224 Chest X-ray</li>
+            <li>Threshold: 50%</li>
+          </ul>
+        </section>
+        {% endif %}
+
+        {% if error %}
+        <section class="result error" id="error-result">
+          <p class="result-label">Error</p>
+          <h2>Prediction Failed</h2>
+          <p>{{ error }}</p>
+        </section>
+        {% endif %}
+      </section>
+    </main>
+    <script>
+      const imageInput = document.getElementById("image");
+      imageInput.addEventListener("change", () => {
+        const oldPrediction = document.getElementById("prediction-result");
+        const oldPreview = document.getElementById("preview-result");
+        const oldError = document.getElementById("error-result");
+        const oldModelDetails = document.getElementById("model-details");
+        const oldModelDetailsLine = document.getElementById("model-details-line");
+        if (oldPrediction) oldPrediction.remove();
+        if (oldPreview) oldPreview.remove();
+        if (oldError) oldError.remove();
+        if (oldModelDetails) oldModelDetails.remove();
+        if (oldModelDetailsLine) oldModelDetailsLine.remove();
+      });
+    </script>
+  </body>
+</html>
